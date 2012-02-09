@@ -133,16 +133,20 @@
 + (FLBugKit *)sharedInstance;
 
 /**
- @param window The window instance that will be monitored using the
+ Starts monitoring a window for a bug gesture event using the
  `UIGestureRecognizer` instance provided by the implementation of
  the `FLStandardApplicationBugMetadataProtocol` by the `sharedApplication`
  delegate.
+ 
+ @param window The window instance that will be monitored 
  */
 - (void)startMonitoringWindow:(UIWindow *)window;
 
 /**
  Removes the `UIGestureRecognizer` from the `UIWindow` that was attached 
  with `startMonitoringWindow:`. 
+ 
+ @param window The window that will stopped being monitored
  */
 - (void)stopMonitoringWindow:(UIWindow *)window;
 

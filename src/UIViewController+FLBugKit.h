@@ -8,8 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ Utilities that are helpful for interacting with FLBugKit and standard UIViewControllers
+ provided by UIKit.
+ */
 @interface UIViewController (FLBugKit)
 
-- (UIViewController *) findTopMostViewController;
+/**
+ With a controller of controllers it is not always obvious which one the
+ user is currently interacting with. `findTopMostViewController` is a
+ simple search that looks for the top most view controller if the root
+ is a `UINavigationController` or the active tab in the case of a
+ `UISplitViewController`.
+ 
+ @return view controller user is likely interacting with
+ */
+- (UIViewController *)findTopMostViewController;
 
 @end

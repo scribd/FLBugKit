@@ -1,0 +1,7 @@
+*xcuserdata/
+*build/
+*.pbxuser
+*.xcworkspace
+*.pyc
+bin/
+*.DS_Store

@@ -58,7 +58,7 @@ assumes that object that implements the `FLStandardApplicationBugMetadataProtoco
 ## Authors
 
 * [Evan Long](https://github.com/evanlong)
-* [Jesse Anderson](https://github.com/gotosleep)
+* [Jesse Andersen](https://github.com/gotosleep)
 
 ## License
 

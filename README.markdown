@@ -8,10 +8,11 @@ to your bug tracking system's inbox.
 
 ## Getting Started
 
-To get started add all the files under `src/` to your project. 
+To get started add all the files under `src/` to your project and add the `MessageUI.framework` to
+your project.
 
 On your `UIApplicationDelegate` implement `FLStandardApplicationBugMetadataProtocol` and
-import `FLBugKit.h` and `UIViewController+FLBugKit.h`.
+import `FLBugKit.h`, `UIViewController+FLBugKit.h` and `UISplitViewController+FLBugKit.h`.
 
     - (NSString *)userId {
         return @"sample user id";
@@ -22,7 +23,7 @@ import `FLBugKit.h` and `UIViewController+FLBugKit.h`.
     }
 
     - (NSString *)defaultBugEmailAddress {
-        return @"mybugemail@myproject.fogbugz.com;
+        return @"mybugemail@myproject.fogbugz.com";
     }
 
     - (NSString *)defaultBugEmailSubject {
@@ -36,10 +37,14 @@ import `FLBugKit.h` and `UIViewController+FLBugKit.h`.
         return bugGesture;
     }
 
-    /*findTopMostViewController is part of the FLBugKit category on UIViewController*/
     - (UIViewController *)activeViewControllerFromRootViewController:(UIViewController *)rootViewController gesture:(UIGestureRecognizer *)gesture {
+        if ([rootViewController isKindOfClass:[UISplitViewController class]]) {
+    	    UISplitViewController *split = (UISplitViewController *)rootViewController;
+    	    rootViewController = [split viewControllerTargetedByGesture:gesture];
+        }
         return [rootViewController findTopMostViewController];
     }
+
 
 There are two ways the bug email can be created. Either programatically:
 
@@ -54,6 +59,10 @@ A good place for `startMonitoringWindow` is in the `application:didFinishLaunchi
 Also it is important to note that `FLStandardApplicationBugMetadataProtocol` must
 be implemented by the object `[UIApplication sharedApplication]` delegate. `FLBugKit`
 assumes that object that implements the `FLStandardApplicationBugMetadataProtocol`.
+
+## Demo
+
+The project under `demo/` is the sample Xcode Universal project setup with FLBugKit.
 
 ## Authors
 
